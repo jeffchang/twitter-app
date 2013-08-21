@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $('#tweet').submit(function(e) {
     e.preventDefault();
-    var url = $(this).find('input[name="username"]').val();
-    $.get(("/"+url), function(response) {
+    var data = "tweet="+$(this).find('input[name="tweeted"]').val();
+    $.post("/", data, function(response) {
       $('.container').html(response);
     });
   });

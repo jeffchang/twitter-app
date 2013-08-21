@@ -3,8 +3,8 @@ get '/' do
   erb :index
 end
 
-get '/:user_name' do
-
-  @tweets = Twitter.user_timeline(params[:user_name]).map(&:text)
+post '/' do
+  Twitter.update(params[:tweet])
+  @tweets = Twitter.user_timeline("jsellout").map(&:text)
   erb :tweets
 end
